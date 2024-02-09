@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3p6hg7mihug1"]
+[gd_scene load_steps=13 format=3 uid="uid://d3p6hg7mihug1"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_g624p"]
+[ext_resource type="Texture2D" uid="uid://bx81ynl50rrt8" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Running (32 x 32).png" id="3_hxc8d"]
 [ext_resource type="Texture2D" uid="uid://dcx4fhxawbrvo" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Idle (32 x 32).png" id="3_vgcti"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jcrh"]
@@ -10,6 +11,22 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pt5vr"]
 atlas = ExtResource("3_vgcti")
 region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsl25"]
+atlas = ExtResource("3_hxc8d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0txle"]
+atlas = ExtResource("3_hxc8d")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkdi0"]
+atlas = ExtResource("3_hxc8d")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po6ib"]
+atlas = ExtResource("3_hxc8d")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f7t7x"]
 animations = [{
@@ -23,21 +40,56 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsl25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0txle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkdi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po6ib")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bulkc"]
 size = Vector2(14, 15)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2vio"]
+size = Vector2(16, 17)
+
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 22
 script = ExtResource("1_g624p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -15)
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_f7t7x")
 animation = &"idle"
+frame_progress = 0.240841
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7.5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_bulkc")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_o2vio")
+debug_color = Color(0.992157, 0, 0.270588, 0.419608)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
