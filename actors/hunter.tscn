@@ -1,10 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq8bek0vg2ut6"]
+[gd_scene load_steps=9 format=3 uid="uid://bq8bek0vg2ut6"]
 
-[ext_resource type="Texture2D" uid="uid://q5n0c5nlvlbr" path="res://assets/Sprite Pack 2/4 - Robo Pumpkin/Walking (16 x 16).png" id="1_c4q1e"]
 [ext_resource type="Script" path="res://scripts/hunter.gd" id="1_nlfij"]
+[ext_resource type="Texture2D" uid="uid://bvn8mlyp5fwqb" path="res://assets/enemy/jeremias_walk.png" id="2_w2i42"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v0an"]
+atlas = ExtResource("2_w2i42")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd45u"]
+atlas = ExtResource("2_w2i42")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52was"]
+atlas = ExtResource("2_w2i42")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsici"]
+atlas = ExtResource("2_w2i42")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yd0bm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v0an")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd45u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52was")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsici")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bynsb"]
-radius = 4.01495
+radius = 7.96947
 
 [node name="Hunter" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
@@ -13,11 +49,13 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_nlfij")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0.717647, 0.584314, 1)
-texture = ExtResource("1_c4q1e")
-hframes = 2
-frame = 1
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.76837e-07, 0)
+scale = Vector2(0.441406, 0.453125)
+sprite_frames = SubResource("SpriteFrames_yd0bm")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.149199
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.76118, 1.76118)

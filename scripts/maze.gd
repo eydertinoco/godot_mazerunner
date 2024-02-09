@@ -6,6 +6,5 @@ extends Node2D
 func _ready():
 	player.follow_camera(camera)
 
-
 func game_over():
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")

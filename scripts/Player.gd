@@ -4,6 +4,7 @@ const speed = 150.0
 const stop = 0
 
 @onready var animation := $AnimatedSprite2D as AnimatedSprite2D
+@onready var collision := $CollisionShape2D as CollisionShape2D
 @onready var remote_transform   := $RemoteTransform2D as RemoteTransform2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -11,6 +12,10 @@ const stop = 0
 func get_input():
 	var direction = Input.get_vector("mov_left", "mov_right", "mov_up", "mov_down")
 	if direction:
+		if direction.x > 0:
+			animation.scale.x = 1
+		elif direction.x < 0:
+			animation.scale.x = -1
 		velocity = direction * speed
 		animation.play("running")
 	else:
