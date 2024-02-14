@@ -32,10 +32,7 @@ func follow_camera(camera):
 	var camera_path = camera.get_path()
 	remote_transform.remote_path = camera_path
 
-
 func _on_area_2d_body_entered(body):
-	print('Entrou')
 	if body.is_in_group("enemies"):
-		print('inimigo')
 		queue_free()
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")

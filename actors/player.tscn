@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3p6hg7mihug1"]
+[gd_scene load_steps=20 format=3 uid="uid://d3p6hg7mihug1"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_g624p"]
 [ext_resource type="Texture2D" uid="uid://dh050mdyqndrs" path="res://assets/player/alagoinha-attack.png" id="2_kb2ep"]
@@ -108,7 +108,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bulkc"]
-size = Vector2(32, 28)
+size = Vector2(18, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2huq"]
+size = Vector2(30, 30)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 22
@@ -127,3 +130,13 @@ position = Vector2(5, -1)
 shape = SubResource("RectangleShape2D_bulkc")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5, -1)
+shape = SubResource("RectangleShape2D_g2huq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
