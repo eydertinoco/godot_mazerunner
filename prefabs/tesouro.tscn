@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://beetfe2cohnwa"]
+
+[ext_resource type="Texture2D" uid="uid://d30cbtqm8qsby" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Treasure_Chest (32 x 16).png" id="1_4x4oj"]
+[ext_resource type="Script" path="res://scripts/tesouro.gd" id="1_l2qdy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dh0io"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofp08"]
+atlas = ExtResource("1_4x4oj")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_634xt"]
+atlas = ExtResource("1_4x4oj")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xu2dq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofp08")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_634xt")
+}],
+"loop": true,
+"name": &"opened",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_l2qdy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4x4oj")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dh0io")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xu2dq")
+animation = &"closed"
+autoplay = "closed"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

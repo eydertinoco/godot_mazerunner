@@ -14,6 +14,10 @@ config/name="Godot Mazerunner"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://singletons/globals.gd"
+
 [input]
 
 mov_left={

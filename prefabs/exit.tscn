@@ -1,14 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu5t1jd7fqgr2"]
+[gd_scene load_steps=4 format=3 uid="uid://bu5t1jd7fqgr2"]
 
-[ext_resource type="Texture2D" uid="uid://d30cbtqm8qsby" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Treasure_Chest (32 x 16).png" id="1_8l1gp"]
+[ext_resource type="Script" path="res://scripts/exit.gd" id="1_8ivfc"]
+[ext_resource type="Texture2D" uid="uid://domdxcqu8ljo0" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/House (112 x 96).png" id="2_r3sna"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhm76"]
+size = Vector2(108, 93)
 
-[node name="Node2D" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8l1gp")
-hframes = 3
+[node name="Node2D" type="Area2D"]
+script = ExtResource("1_8ivfc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 4.5)
 shape = SubResource("RectangleShape2D_rhm76")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.27374e-13, 0)
+scale = Vector2(0.920833, 1.02632)
+texture = ExtResource("2_r3sna")
+hframes = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

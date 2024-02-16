@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://ch4w4h3s2a3e"]
+
+[ext_resource type="Script" path="res://scripts/lover.gd" id="1_teqb6"]
+[ext_resource type="Texture2D" uid="uid://b7ilxk2f7kttw" path="res://assets/Sprite Pack 2/6 - Robo Totem/Armored_Standing (16 x 32).png" id="2_vmx68"]
+[ext_resource type="Texture2D" uid="uid://w0k67v0hjggb" path="res://assets/Sprite Pack 2/6 - Robo Totem/Armored_Walking (16 x 32).png" id="3_dvbpm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytmxi"]
+atlas = ExtResource("2_vmx68")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gaqw"]
+atlas = ExtResource("3_dvbpm")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cv2u"]
+atlas = ExtResource("3_dvbpm")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qaala"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytmxi")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gaqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cv2u")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nbt2"]
+size = Vector2(16, 22)
+
+[node name="Lover" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_teqb6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qaala")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.237658
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_5nbt2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

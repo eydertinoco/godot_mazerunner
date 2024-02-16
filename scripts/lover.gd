@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 40
+var speed = 50
 
 @export var player: Node2D
 @onready var animation := $AnimatedSprite2D as AnimatedSprite2D
@@ -15,12 +15,15 @@ func _physics_process(_delta: float) -> void:
 		animation.flip_h = false
 	move_and_slide()
 
+func battlechanger() -> void:
+	if (Globals.bosslife != 3):
+		makepath()
+
 func makepath() -> void:
-	if (Globals.entrarDungeon):
-		nav_agent.target_position = player.global_position
+	nav_agent.target_position = player.global_position
 
 func _on_timer_timeout():
-	makepath()
+	battlechanger()
 
 func _ready():
-	makepath()
+	battlechanger()

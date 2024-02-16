@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://rnu87jc40qn4"]
+
+[ext_resource type="Script" path="res://scripts/dungeon.gd" id="1_4nbvw"]
+[ext_resource type="Texture2D" uid="uid://ddaxxaxwqcm4s" path="res://assets/Sprite Pack 2/5 - Daikon/Hurt (16 x 32).png" id="1_a7kn6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5m3vw"]
+
+[node name="dungeon" type="Area2D"]
+script = ExtResource("1_4nbvw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5m3vw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.96046e-08, -6)
+scale = Vector2(1.53125, 0.921875)
+texture = ExtResource("1_a7kn6")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
