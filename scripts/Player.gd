@@ -22,7 +22,7 @@ func get_input():
 		velocity = direction * stop
 		animation.play("idle")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	get_input()

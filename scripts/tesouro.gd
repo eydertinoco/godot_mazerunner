@@ -3,7 +3,7 @@ extends Area2D
 var tesouroFechado = true
 @onready var animation := $AnimatedSprite2D as AnimatedSprite2D
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	if (tesouroFechado):
 		Globals.tesouroColetado = Globals.tesouroColetado + 1
 		print('Adquirido 1 moeda')
