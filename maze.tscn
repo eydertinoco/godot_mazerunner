@@ -444,7 +444,7 @@ position = Vector2(1109, 1232)
 scale = Vector2(0.502852, 1.62675)
 
 [node name="Player" parent="." instance=ExtResource("2_25nrp")]
-position = Vector2(1223, 1206)
+position = Vector2(1223, 1201)
 scale = Vector2(0.5, 0.5)
 
 [node name="Hunter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_35cy7")]
@@ -455,7 +455,6 @@ player = NodePath("../Player")
 zoom = Vector2(6, 6)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -493,6 +492,46 @@ player = NodePath("../../Player")
 position = Vector2(722, 62)
 player = NodePath("../../Player")
 
+[node name="King5" parent="King" node_paths=PackedStringArray("player") instance=ExtResource("7_c5khw")]
+position = Vector2(530, 574)
+player = NodePath("../../Player")
+
+[node name="King6" parent="King" node_paths=PackedStringArray("player") instance=ExtResource("7_c5khw")]
+position = Vector2(926, 598)
+player = NodePath("../../Player")
+
+[node name="King7" parent="King" node_paths=PackedStringArray("player") instance=ExtResource("7_c5khw")]
+position = Vector2(65, 931)
+player = NodePath("../../Player")
+
+[node name="King8" parent="King" node_paths=PackedStringArray("player") instance=ExtResource("7_c5khw")]
+position = Vector2(364, 1234)
+player = NodePath("../../Player")
+
+[node name="King9" parent="King" node_paths=PackedStringArray("player") instance=ExtResource("7_c5khw")]
+position = Vector2(62, 1134)
+player = NodePath("../../Player")
+
+[node name="King10" parent="King" node_paths=PackedStringArray("player") instance=ExtResource("7_c5khw")]
+position = Vector2(860, 784)
+player = NodePath("../../Player")
+
+[node name="King11" parent="King" node_paths=PackedStringArray("player") instance=ExtResource("7_c5khw")]
+position = Vector2(1079, 66)
+player = NodePath("../../Player")
+
+[node name="King12" parent="King" node_paths=PackedStringArray("player") instance=ExtResource("7_c5khw")]
+position = Vector2(333, 352)
+player = NodePath("../../Player")
+
+[node name="King13" parent="King" node_paths=PackedStringArray("player") instance=ExtResource("7_c5khw")]
+position = Vector2(66, 289)
+player = NodePath("../../Player")
+
+[node name="King14" parent="King" node_paths=PackedStringArray("player") instance=ExtResource("7_c5khw")]
+position = Vector2(397, 66)
+player = NodePath("../../Player")
+
 [node name="Lover" type="Node" parent="."]
 
 [node name="Lover1" parent="Lover" node_paths=PackedStringArray("player") instance=ExtResource("8_e6wq8")]
@@ -515,6 +554,26 @@ player = NodePath("../../Player")
 position = Vector2(72, 816)
 player = NodePath("../../Player")
 
+[node name="Lover6" parent="Lover" node_paths=PackedStringArray("player") instance=ExtResource("8_e6wq8")]
+position = Vector2(216, 215)
+player = NodePath("../../Player")
+
+[node name="Lover7" parent="Lover" node_paths=PackedStringArray("player") instance=ExtResource("8_e6wq8")]
+position = Vector2(376, 523)
+player = NodePath("../../Player")
+
+[node name="Lover8" parent="Lover" node_paths=PackedStringArray("player") instance=ExtResource("8_e6wq8")]
+position = Vector2(280, 956)
+player = NodePath("../../Player")
+
+[node name="Lover9" parent="Lover" node_paths=PackedStringArray("player") instance=ExtResource("8_e6wq8")]
+position = Vector2(264, 956)
+player = NodePath("../../Player")
+
+[node name="Lover10" parent="Lover" node_paths=PackedStringArray("player") instance=ExtResource("8_e6wq8")]
+position = Vector2(664, 474)
+player = NodePath("../../Player")
+
 [node name="Exit" parent="." instance=ExtResource("10_hcw5e")]
 position = Vector2(1225, 1145)
 scale = Vector2(0.568628, 0.539394)
@@ -529,3 +588,15 @@ position = Vector2(898, 318)
 
 [node name="tesouro3" parent="Tesouro" instance=ExtResource("11_yqeai")]
 position = Vector2(1166, 1195)
+
+[node name="tesouro4" parent="Tesouro" instance=ExtResource("11_yqeai")]
+position = Vector2(991, 989)
+
+[node name="tesouro5" parent="Tesouro" instance=ExtResource("11_yqeai")]
+position = Vector2(1094, 658)
+
+[node name="tesouro6" parent="Tesouro" instance=ExtResource("11_yqeai")]
+position = Vector2(502, 474)
+
+[node name="tesouro7" parent="Tesouro" instance=ExtResource("11_yqeai")]
+position = Vector2(63, 470)

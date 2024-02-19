@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh0jtxsslb7sy"]
+[gd_scene load_steps=8 format=3 uid="uid://dh0jtxsslb7sy"]
 
 [ext_resource type="Script" path="res://scripts/king.gd" id="1_7uo3k"]
 [ext_resource type="Texture2D" uid="uid://btt307ecgwvyg" path="res://assets/Sprite Pack 2/3 - Octi/Idle_&_Movement (16 x 16).png" id="2_wwfbw"]
@@ -28,7 +28,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hoot0"]
 radius = 2.3411
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["enemies"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5nt6w"]
+radius = 5.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["debuff"]]
 collision_layer = 4
 collision_mask = 3
 motion_mode = 1
@@ -46,10 +49,15 @@ scale = Vector2(1.76118, 1.76118)
 shape = SubResource("CircleShape2D_hoot0")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5nt6w")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

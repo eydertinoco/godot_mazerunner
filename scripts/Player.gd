@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 150.0
+var speed = 150.0
 const stop = 0
 
 @onready var animation := $AnimatedSprite2D as AnimatedSprite2D
@@ -36,3 +36,6 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("enemies"):
 		queue_free()
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	elif body.is_in_group("debuff"):
+		speed = speed - 10
+		print(speed)
