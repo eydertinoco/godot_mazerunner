@@ -1,11 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://xhttyrjkgj0h"]
+[gd_scene load_steps=19 format=3 uid="uid://xhttyrjkgj0h"]
 
 [ext_resource type="Script" path="res://scripts/maze.gd" id="1_gg5p7"]
 [ext_resource type="Texture2D" uid="uid://cai0xipslnif4" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="2_xwf1a"]
 [ext_resource type="Texture2D" uid="uid://da5s17n5pub5b" path="res://assets/Seasonal Tilesets/3 - Tropics/Terrain (16 x 16).png" id="3_4hrcb"]
 [ext_resource type="Texture2D" uid="uid://drs15q4bma047" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/Blocks (16 x 16).png" id="4_ccj12"]
 [ext_resource type="Texture2D" uid="uid://dnuin5uyrnwat" path="res://assets/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="5_0kary"]
-[ext_resource type="PackedScene" uid="uid://d3p6hg7mihug1" path="res://actors/player.tscn" id="6_75x77"]
+[ext_resource type="PackedScene" uid="uid://d3p6hg7mihug1" path="res://actors/player.tscn" id="8_hlp4n"]
+[ext_resource type="PackedScene" uid="uid://bq8bek0vg2ut6" path="res://actors/hunter.tscn" id="9_ihrs1"]
+[ext_resource type="PackedScene" uid="uid://bu5t1jd7fqgr2" path="res://prefabs/exit.tscn" id="12_3k2nv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sp5i2"]
 texture = ExtResource("2_xwf1a")
@@ -432,8 +434,17 @@ layer_1/tile_data = PackedInt32Array()
 layer_2/name = "Floresta"
 layer_2/tile_data = PackedInt32Array()
 
-[node name="Player" parent="." instance=ExtResource("6_75x77")]
-position = Vector2(21, 22)
-scale = Vector2(0.5, 0.5)
+[node name="Exit" parent="." instance=ExtResource("12_3k2nv")]
+position = Vector2(173, -140)
+scale = Vector2(0.568628, 0.539394)
+
+[node name="Hunter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_ihrs1")]
+position = Vector2(-32, -29)
+player = NodePath("../Player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(6, 6)
+
+[node name="Player" parent="." instance=ExtResource("8_hlp4n")]
+position = Vector2(40, -21)
+scale = Vector2(0.5, 0.5)

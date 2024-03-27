@@ -433,7 +433,6 @@ layer_2/name = "Floresta"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("6_75x77")]
-position = Vector2(21, 22)
-scale = Vector2(0.5, 0.5)
+position = Vector2(93, 79)
 
 [node name="Camera2D" type="Camera2D" parent="."]
