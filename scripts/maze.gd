@@ -2,7 +2,10 @@ extends Node2D
 
 @onready var tilemap = $Mapa as TileMap
 @onready var player := $Player as CharacterBody2D
+@onready var player_scene = preload("res://actors/player.tscn")
 @onready var camera := $Camera2D as Camera2D
+@onready var saida := $Saida as Area2D
+
 
 var map_size = Vector2(16*Globals.nivelJogo, 8*Globals.nivelJogo)
 var maze = [] # Matriz para representar o labirinto
@@ -13,7 +16,8 @@ var exit_point = Vector2((16*Globals.nivelJogo)-1, (8*Globals.nivelJogo)-1) # Po
 
 
 func _ready():
-	player.follow_camera(camera)
+	Globals.player = player
+	Globals.player.follow_camera(camera)
 	initialize_maze()
 	generate_maze()
 	remove_random_wall_at_end_of_maze()
@@ -111,3 +115,5 @@ func display_maze():
 				tilemap.set_cell(0, Vector2(x,y), 1, Vector2(4,3))
 			elif x == exit_point.x-1 and y == exit_point.y-1:
 				tilemap.set_cell(0, Vector2(x,y), 2, Vector2(7,1))
+				saida.position =  Vector2(((16 * (exit_point.x-1))) + 3, ((16 * (exit_point.y-1))) + 3)
+				print(saida.position)

@@ -6,7 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f38ve"]
 size = Vector2(10, 10)
 
-[node name="Saida" type="Node2D"]
+[node name="Saida" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_bfeu7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,3 +20,5 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_ak4me")
 hframes = 2
 frame = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
