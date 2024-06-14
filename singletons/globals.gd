@@ -4,7 +4,7 @@ var bosslife := 3
 var lama := -10
 var entrarDungeon := false
 
-var nivelJogo := 4
+var nivelJogo := 2
 
 var tesouroColetado := 0
 
