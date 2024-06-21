@@ -1,0 +1,18 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://6cfn0q2wvr3h"]
+
+[ext_resource type="Texture2D" uid="uid://da5s17n5pub5b" path="res://assets/Seasonal Tilesets/3 - Tropics/Terrain (16 x 16).png" id="1_dc18q"]
+[ext_resource type="Texture2D" uid="uid://drs15q4bma047" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/Blocks (16 x 16).png" id="2_0rmj1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eviw7"]
+resource_name = "BACKGROUND"
+texture = ExtResource("1_dc18q")
+4:4/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6u1d"]
+resource_name = "WALL"
+texture = ExtResource("2_0rmj1")
+1:1/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_eviw7")
+sources/1 = SubResource("TileSetAtlasSource_y6u1d")
