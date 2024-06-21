@@ -5,6 +5,7 @@ extends Node2D
 @onready var tilemap = $Mapa as TileMap
 @onready var player := $Player as CharacterBody2D
 @onready var player_scene = preload("res://actors/player.tscn")
+@onready var hunter_scene = preload("res://actors/hunter.tscn")
 @onready var camera := $Camera2D as Camera2D
 @onready var saida := $Saida as Area2D
 
@@ -25,6 +26,7 @@ func _ready():
 	initialize_maze()
 	generate_maze()
 	connect_start_to_exit()
+	place_hunter()
 	display_maze()
 
 func game_over():
@@ -110,10 +112,8 @@ func connect_start_to_exit():
 			var path = []
 			var node = exit_cell
 			while node in parent_map:
-				print('Node: ' + str(node))
 				path.append(node)
 				node = parent_map[node]
-				print('Node 2: ' + str(node))
 			# Adicione a célula inicial ao caminho
 			path.append(start_cell) 
 			# Reverter o caminho para começar do início
@@ -139,7 +139,7 @@ func get_adjacent_cells(cell):
 			neighbors.append(neighbor)
 	return neighbors
 
-# Remover muro
+# Adicionando Muros
 func remove_wall(cell1, cell2):
 	# Pega a diferença entre as duas celulas adquiridas
 	var diff = cell2 - cell1
@@ -156,6 +156,7 @@ func remove_wall(cell1, cell2):
 		if cell2.x * 2 < maze.size() and cell2.y * 2 + 1 < maze[0].size():
 			maze[cell2.x * 2][cell2.y * 2 + 1] = 0
 
+# Removendo muro fazendo ligação entre o começo e a saida
 func remove_wall2(cell1, cell2):
 	# Pega a diferença entre as duas celulas adquiridas
 	var diff = cell2 - cell1
@@ -171,6 +172,19 @@ func remove_wall2(cell1, cell2):
 	elif diff == Vector2(0, -1): # Cima
 		if cell2.x < maze.size() and cell2.y + 1 < maze[0].size():
 			maze[cell2.x][cell2.y + 1] = 1
+
+func place_hunter():
+	var hunter = hunter_scene.instantiate()
+	add_child(hunter)
+	hunter.player = player
+	var placed = false
+	while not placed:
+		var x = randi() % int(map_size.x)
+		var y = randi() % int(map_size.y)
+		# Verifica se é um espaço vazio e diferente do player
+		if maze[x][y] == 0 and Vector2(x, y) != player_start:
+			hunter.position = Vector2(x * 16, y * 16)
+			placed = true
 
 # Construção do labirinto com tilemap
 func display_maze():

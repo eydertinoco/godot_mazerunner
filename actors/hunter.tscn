@@ -51,14 +51,13 @@ script = ExtResource("1_nlfij")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-4.76837e-07, 0)
-scale = Vector2(0.441406, 0.453125)
+scale = Vector2(0.25, 0.257)
 sprite_frames = SubResource("SpriteFrames_yd0bm")
 animation = &"walk"
 autoplay = "walk"
 frame_progress = 0.149199
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.76118, 1.76118)
 shape = SubResource("CircleShape2D_bynsb")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
