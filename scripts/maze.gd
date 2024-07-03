@@ -18,13 +18,19 @@ var visited = []
 var player_start = Vector2(1, 1) 
 # Posição de saída do labirinto
 #var exit_point = Vector2((16*Globals.nivelJogo)-1, (8*Globals.nivelJogo)-1)
-var exit_point = Vector2(randi() % int(map_size.x), randi() % int(map_size.y))
+#var exit_point = Vector2(randi() % int(map_size.x), randi() % int(map_size.y))
+var exit_point
 
 func _ready():
 	Globals.player = player
 	Globals.player.follow_camera(camera)
 	initialize_maze()
 	generate_maze()
+	var valid_exit_point = false
+	while !valid_exit_point:
+		exit_point = Vector2(randi() % int(map_size.x), randi() % int(map_size.y))
+		if exit_point.x != 0 && exit_point.x != 1 && exit_point.x != map_size.x - 1 && exit_point.y != 0 && exit_point.y != 1 && exit_point.y != map_size.y - 1:
+			valid_exit_point = true
 	connect_start_to_exit()
 	place_hunter()
 	display_maze()
@@ -203,6 +209,6 @@ func display_maze():
 			if x == 0 or x == map_size.x - 1 or y == 0 or y == map_size.y - 1:
 				tilemap.set_cell(0, Vector2(x,y), 2, Vector2(1,1))
 			# Criando saida
-			if x == exit_point.x-1 and y == exit_point.y-1:
+			if x == exit_point.x and y == exit_point.y:
 				tilemap.set_cell(0, Vector2(x,y), 2, Vector2(7,1))
-				saida.position =  Vector2(((16 * (exit_point.x-1))) + 3, ((16 * (exit_point.y-1))) + 3)
+				saida.position =  Vector2(((16 * (exit_point.x))) + 3, ((16 * (exit_point.y))) + 3)
