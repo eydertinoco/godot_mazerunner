@@ -188,7 +188,7 @@ func place_hunter():
 		var x = randi() % int(map_size.x)
 		var y = randi() % int(map_size.y)
 		# Verifica se é um espaço vazio e diferente do player
-		if maze[x][y] == 0 and Vector2(x, y) != player_start:
+		if maze[x][y] == 0 and Vector2(x, y) != player_start and x != 0 and x != map_size.x - 1 and y != 0 and y != map_size.y - 1:
 			hunter.position = Vector2(x * 16, y * 16)
 			placed = true
 
